@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Neuton|Satisfy|Tangerine:400,700");
+body {
+  background-color: #000000;
+  line-height: 1.4;
+}
+
+h1.header {
+  color: #bf9b30;
+  font-family: "Satisfy", Helvetica, sans-serif;
+  padding: 15px;
+}
+
+p.slogan {
+  color: #ffffff;
+  font-family: "Neuton", Lucida Sans, sans-serif;
+  font-size: 20px;
+}
+
+img {
+  border: 1px solid #ffbf00;
+}
