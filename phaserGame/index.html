@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mystic Mac</title>
+    <!--Calls the scripts that were created for the game to run and also calls the phaser.js script-->
+    <script src="libs/phaser.js"></script>
+    <script src="Boot.js"></script>
+    <script src="Preloader.js"></script>
+    <script src="StartMenu.js"></script>
+    <script src="Game.js"></script>
+    
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #000000;
+		}
+	</style>
+</head>
+<body>
+    <div id="gameContainer"></div>
+    <script type="text/javascript">
+        
+        var game = new Phaser.Game(540, 960, Phaser.AUTO, 'gameContainer'); //creates a variable game and adds a new phaser game to it. 
+        var lives;
+        //loads each created game state to the game variable above
+            game.state.add('Boot', MysticMac.Boot);
+            game.state.add('Preloader', MysticMac.Preloader);
+            game.state.add('StartMenu', MysticMac.StartMenu);
+            game.state.add('Game', MysticMac.Game);
+            game.state.start('Boot');
+            
+        
+    </script>
+</body>
+</html>
