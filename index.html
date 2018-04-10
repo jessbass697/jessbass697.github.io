@@ -1,1 +1,37 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>JB Productions</title><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><script src="js/bootstrap.js"></script><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><div class="container"><div class="row"><h1 class="header">JB Productions</h1></div><div class="row"><div class="col align-self-start"><p class="slogan">Welcome to JB Productions Portfolio Page</p></div></div><br><br><div class="row"><!-- inject:jpg --><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/aj.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/ali.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/avengers.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/back.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/banksy1.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/banksy2.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/banksy3.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/banksy4.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/banksy5.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/banksy6.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/brucelee.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/captainamerica.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/conormcgregor.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/conormcgregor1.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/desertedRoad.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/edSheeran.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/elvis.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/eminem.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/guardians.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/hulk.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/ironman.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/johnCash.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/jonjones.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/london.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/piano.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/silva.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/spiderman.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/taylor.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/tkd.jpg"></div><div class=".col col-sm-6 col-xl-4"><img class="img-fluid" src="images/ufc.jpg"></div><!-- endinject --></div></div><!--end of container--></body></html>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mystic Mac</title>
+    <!--Calls the scripts that were created for the game to run and also calls the phaser.js script-->
+    <script src="libs/phaser.js"></script>
+    <script src="Boot.js"></script>
+    <script src="Preloader.js"></script>
+    <script src="StartMenu.js"></script>
+    <script src="Game.js"></script>
+    
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #000000;
+		}
+	</style>
+</head>
+<body>
+    <div id="gameContainer"></div>
+    <script type="text/javascript">
+        
+        var game = new Phaser.Game(540, 960, Phaser.AUTO, 'gameContainer'); //creates a variable game and adds a new phaser game to it. 
+        var lives;
+        //loads each created game state to the game variable above
+            game.state.add('Boot', MysticMac.Boot);
+            game.state.add('Preloader', MysticMac.Preloader);
+            game.state.add('StartMenu', MysticMac.StartMenu);
+            game.state.add('Game', MysticMac.Game);
+            game.state.start('Boot');
+            
+        
+    </script>
+</body>
+</html>
