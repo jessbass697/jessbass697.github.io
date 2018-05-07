@@ -168,7 +168,7 @@ gulp.task('exif', () => {
     gulp.src('builds/development/images/*.jpg')
     .pipe(exif())
     .pipe(data(function(file) {
-        let filename = file.path.substring(file.path.lastIndexOf('/') +64),
+        let filename = file.path.substring(file.path.lastIndexOf('/') +79),
             data = {};
         data[filename] = {};
         data[filename]['Artist'] = file.exif.image.Artist;
