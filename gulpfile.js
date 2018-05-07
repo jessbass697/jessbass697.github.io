@@ -9,7 +9,10 @@ const gulp = require('gulp'),
       data = require('gulp-data'),
       extend = require('gulp-extend'),
       compass = require('gulp-compass'),
-      htmlmin = require('gulp-htmlmin');
+      htmlmin = require('gulp-htmlmin'),
+      argv = require('yargs').argv,
+      git = require('gulp-git'),
+      runSequence = require('run-sequence');
 
 sassSources = ['components/sass/style.scss'];
 
@@ -183,4 +186,24 @@ gulp.task('htmlmin', () => {
         collapseWhitespace: true
     }))
     .pipe(gulp.dest('./'))
+});
+
+gulp.task('add', () => {
+    return gulp.src('.')
+    .pipe(git.add());
+});
+
+gulp.task('commit', () => {
+    return gulp.src('./*')
+    .pipe(git.commit('gulpfiletest'));
+});
+
+gulp.task('push', () => {
+    git.push('origin', 'master', function(err) {
+        if(err) throw err;
+    });
+});
+
+gulp.task('git-send', () => {
+    runSequence('add', 'commit', 'push');
 });
