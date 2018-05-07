@@ -12,7 +12,8 @@ const gulp = require('gulp'),
       htmlmin = require('gulp-htmlmin'),
       argv = require('yargs').argv,
       git = require('gulp-git'),
-      runSequence = require('run-sequence');
+      runSequence = require('run-sequence'),
+      gitignore = require('gulp-gitignore');
 
 sassSources = ['components/sass/style.scss'];
 
@@ -189,13 +190,14 @@ gulp.task('htmlmin', () => {
 });
 
 gulp.task('add', () => {
-    return gulp.src('.')
+    return gulp.src('./*')
+    .pipe(gitignore())
     .pipe(git.add());
 });
 
 gulp.task('commit', () => {
     return gulp.src('./*')
-    .pipe(git.commit('gulpfiletest'));
+    .pipe(git.commit('initial commit'));
 });
 
 gulp.task('push', () => {
