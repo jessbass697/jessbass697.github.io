@@ -155,7 +155,7 @@ gulp.task(
         }), {
             transform: function(filepath) {
                 if (filepath.slice(-4) === '.jpg') {
-                    return '<div class="gallery_product .col col-sm-6 col-xl-4 filter banksy"><picture><a class="image-link" href="builds/development/images/large/' + filepath.slice(27) + '"><img class="img-fluid" src="builds/development/images/' + filepath.slice(27) + '" sizes="(min-width: 1200px) 33.3vw, (min-width: 576px) 50vw, (min-width: 575px) 100vw" srcset="builds/development/images/small/' + filepath.slice(27) + ' 576w, builds/development/images/medium/' + filepath.slice(27) + ' 768w, builds/development/images/large/' + filepath.slice(27) + ' 992w, builds/development/images/xl/' + filepath.slice(27) + ' 1200w"></a></picture></div>';
+                    return '<div class="gallery_product .col col-sm-6 col-xl-4 filter banksy"><picture><a class="image-link" href="builds/development/images/large/' + filepath.slice(27) + '"><img class="img-fluid" src="builds/development/images/' + filepath.slice(27) + '" sizes="(min-width: 1200px) 33.3vw, (min-width: 576px) 50vw, (max-width: 359px) 100vw" srcset="builds/development/images/small/' + filepath.slice(27) + ' 576w, builds/development/images/medium/' + filepath.slice(27) + ' 768w, builds/development/images/large/' + filepath.slice(27) + ' 992w, builds/development/images/xl/' + filepath.slice(27) + ' 1200w"></a></picture><table id="exifdata" border="0"><thead><td>Artist</td><td>Date</td><td>Resolution</td></thead><tbody></tbody></table></div>';
                 }
                 return inject.transform.apply(inject.transform, arguments);
             },
@@ -168,7 +168,7 @@ gulp.task('exif', () => {
     gulp.src('builds/development/images/*.jpg')
     .pipe(exif())
     .pipe(data(function(file) {
-        let filename = file.path.substring(file.path.lastIndexOf('/') +79),
+        let filename = file.path.slice(78, -4),
             data = {};
         data[filename] = {};
         data[filename]['Artist'] = file.exif.image.Artist;
@@ -178,7 +178,7 @@ gulp.task('exif', () => {
         file.contents = new Buffer(JSON.stringify(data));
     }))
     .pipe(extend('exif.json', true, '    '))
-    .pipe(gulp.dest('builds/development'));
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('htmlmin', () => {

@@ -7,10 +7,24 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous">
         </script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
         <script src="builds/development/js/bootstrap.js"></script>
         <link rel="stylesheet" href="builds/development/css/bootstrap.min.css">
         <link rel="stylesheet" href="builds/development/css/magnific-popup.css">
         <link rel="stylesheet" href="builds/development/css/style.css">
+        
+        <script>
+            $(function() {
+                const exif = [];
+                
+                $.getJSON('exif.json', function(data) {
+                    $.each(data.aj, function(i, f) {
+                        const tblRow = "<tr>" + "<td>" + f.Artist + "</td>" + "<td>" + f.Date + "</td>" + "<td>" + f.Resolution + "</td>" + "</tr>"
+                        $(tblRow).appendTo("#exifdata tbody");
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container">
