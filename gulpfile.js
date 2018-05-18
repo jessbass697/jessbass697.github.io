@@ -17,7 +17,6 @@ const gulp = require('gulp'),
 
 sassSources = ['components/sass/style.scss'];
 
-
 gulp.task('compass', () => {
     gulp.src(sassSources)
         .pipe(compass({
@@ -155,7 +154,7 @@ gulp.task(
         }), {
             transform: function(filepath) {
                 if (filepath.slice(-4) === '.jpg') {
-                    return '<div class="gallery_product .col col-sm-6 col-xl-4 filter banksy"><picture><a class="image-link" href="builds/development/images/large/' + filepath.slice(27) + '"><img class="img-fluid" src="builds/development/images/' + filepath.slice(27) + '" sizes="(min-width: 1200px) 33.3vw, (min-width: 576px) 50vw, (max-width: 359px) 100vw" srcset="builds/development/images/small/' + filepath.slice(27) + ' 576w, builds/development/images/medium/' + filepath.slice(27) + ' 768w, builds/development/images/large/' + filepath.slice(27) + ' 992w, builds/development/images/xl/' + filepath.slice(27) + ' 1200w"></a></picture><table id="exifdata" border="0"><thead><td>Artist</td><td>Date</td><td>Resolution</td></thead><tbody></tbody></table></div>';
+                    return '<div class="' + filepath.slice(27, -4) + ' gallery_product .col col-sm-6 col-xl-4 filter banksy"><picture><a class="image-link" href="builds/development/images/large/' + filepath.slice(27) + '"><img class="img-fluid" src="builds/development/images/' + filepath.slice(27) + '" sizes="(min-width: 1200px) 33.3vw, (min-width: 576px) 50vw, (max-width: 359px) 100vw" srcset="builds/development/images/small/' + filepath.slice(27) + ' 576w, builds/development/images/medium/' + filepath.slice(27) + ' 768w, builds/development/images/large/' + filepath.slice(27) + ' 992w, builds/development/images/xl/' + filepath.slice(27) + ' 1200w"></a></picture></div>';
                 }
                 return inject.transform.apply(inject.transform, arguments);
             },
@@ -172,8 +171,6 @@ gulp.task('exif', () => {
             data = {};
         data[filename] = {};
         data[filename]['Artist'] = file.exif.image.Artist;
-        data[filename]['Date'] = file.exif.image.ModifyDate;
-        data[filename]['Resolution'] = file.exif.thumbnail.XResolution;
 
         file.contents = new Buffer(JSON.stringify(data));
     }))
@@ -197,6 +194,7 @@ gulp.task('add', () => {
 
 gulp.task('commit', () => {
     return gulp.src('./*')
+    .pipe(gitignore())
     .pipe(git.commit('initial commit'));
 });
 
