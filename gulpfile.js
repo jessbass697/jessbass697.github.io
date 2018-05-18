@@ -207,7 +207,3 @@ gulp.task('push', () => {
 gulp.task('git-send', () => {
     runSequence('add', 'commit', 'push');
 });
-
-gulp.task('imageWorkflow', () => {
-    runSequence('resize', 'watermark', 'inject', 'htmlmin', 'git-send');
-});
