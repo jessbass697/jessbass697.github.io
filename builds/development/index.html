@@ -18,7 +18,7 @@
                 
                 $.getJSON('exif.json', function(data) {
                     $.each(data, function(i, f) {
-                        $("<span>" + f.Artist + "</span>").insertAfter("div");
+                        $("<span>Photographer: "  + f.Artist + "</span>" + "<br>" + "<span>Image Resolution " + f.Resolution + "</span>").insertAfter("picture");
                     });
                 });
             });

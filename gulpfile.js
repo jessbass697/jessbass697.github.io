@@ -41,6 +41,8 @@ gulp.task('removeHtml', () => {
 
 gulp.task('remove', ['removeImages', 'removeHtml']);
 
+
+
 gulp.task('original', () => {
     gulp.src('components/images/*.{jpg,png}')
     .pipe(imageResize({
@@ -164,13 +166,15 @@ gulp.task(
 );
 
 gulp.task('exif', () => {
-    gulp.src('builds/development/images/*.jpg')
+    gulp.src('builds/development/images/aj.jpg')
     .pipe(exif())
     .pipe(data(function(file) {
         let filename = file.path.slice(78, -4),
             data = {};
         data[filename] = {};
         data[filename]['Artist'] = file.exif.image.Artist;
+        data[filename]['Resolution'] = file.exif.thumbnail.XResolution;
+
 
         file.contents = new Buffer(JSON.stringify(data));
     }))
@@ -185,6 +189,10 @@ gulp.task('htmlmin', () => {
     }))
     .pipe(gulp.dest('./'))
 });
+
+gulp.task('html', () => {
+    runSequence('inject', 'htmlmin');
+})
 
 gulp.task('add', () => {
     return gulp.src('./*')

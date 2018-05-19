@@ -19,6 +19,7 @@ p.slogan {
 
 img {
     border: 1px solid $imageBorder;
+    margin-top: 20px;
 }
 
 .filter-button {
@@ -36,4 +37,11 @@ img {
 
 .btn-default:active .filter-button:active {
     border: 1px solid $imageBorder;
+}
+
+span {
+    font-family: $textFont;
+    color:$imageBorder;
+    font-size:18px;
+    padding-bottom:50px;
 }
