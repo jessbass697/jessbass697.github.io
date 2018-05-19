@@ -14,6 +14,7 @@ p.slogan {
     color: $text;
     font-family: $textFont;
     font-size:20px;
+    letter-spacing:1px;
     
 }
 
@@ -22,26 +23,8 @@ img {
     margin-top: 20px;
 }
 
-.filter-button {
-    font-size: 18px;
-    color: $imageBorder;
-    background-color: $background;
-    border-radius: 5px;
-    text-align: center;
-    font-family: $textFont;
-}
-
-.filter-button:hover {
-    border: 1px solid $imageBorder;
-}
-
-.btn-default:active .filter-button:active {
-    border: 1px solid $imageBorder;
-}
-
 span {
-    font-family: $textFont;
-    color:$imageBorder;
+    font-family: $spanFont;
+    color:$span;
     font-size:18px;
-    padding-bottom:50px;
 }

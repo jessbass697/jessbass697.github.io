@@ -18,7 +18,7 @@
                 
                 $.getJSON('exif.json', function(data) {
                     $.each(data, function(i, f) {
-                        $("<span>Photographer: "  + f.Artist + "</span>" + "<br>" + "<span>Image Resolution " + f.Resolution + "</span>").insertAfter("picture");
+                        $("<span>Photographer: "  + f.Artist + "</span>" + "<br>" + "<span>Image Resolution: " + f.Resolution + "</span>" + "<br>" + "<span>Date: " + f.Date + "</span>").insertAfter("picture");
                     });
                 });
             });
@@ -34,17 +34,6 @@
                     <p class="slogan">Welcome to JB Productions Portfolio Page</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col align-self-start">
-                    <button class="btn btn-default filter-button" data-filter="all">All</button>
-                    <button class="btn btn-default filter-button" data-filter="samdean">Sam Dean</button>
-                    <button class="btn btn-default filter-button" data-filter="stanlee">Stan Lee</button>
-                    <button class="btn btn-default filter-button" data-filter="banksy">Banksy</button>
-                    <button class="btn btn-default filter-button" data-filter="danawhite">Dana White</button>
-                    <button class="btn btn-default filter-button" data-filter="joshuaritchie">Joshua Ritchie</button>
-                </div>
-            </div>
-            <br>
             <br>
             <div class="row">
                 

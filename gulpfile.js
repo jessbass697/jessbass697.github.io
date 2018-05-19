@@ -156,7 +156,7 @@ gulp.task(
         }), {
             transform: function(filepath) {
                 if (filepath.slice(-4) === '.jpg') {
-                    return '<div class="' + filepath.slice(27, -4) + ' gallery_product .col col-sm-6 col-xl-4 filter banksy"><picture><a class="image-link" href="builds/development/images/large/' + filepath.slice(27) + '"><img class="img-fluid" src="builds/development/images/' + filepath.slice(27) + '" sizes="(min-width: 1200px) 33.3vw, (min-width: 576px) 50vw, (max-width: 359px) 100vw" srcset="builds/development/images/small/' + filepath.slice(27) + ' 576w, builds/development/images/medium/' + filepath.slice(27) + ' 768w, builds/development/images/large/' + filepath.slice(27) + ' 992w, builds/development/images/xl/' + filepath.slice(27) + ' 1200w"></a></picture></div>';
+                    return '<div class="' + filepath.slice(27, -4) + ' gallery_product .col col-sm-6 col-xl-4"><picture><a class="image-link" href="builds/development/images/large/' + filepath.slice(27) + '"><img class="img-fluid" src="builds/development/images/' + filepath.slice(27) + '" sizes="(min-width: 1200px) 33.3vw, (min-width: 576px) 50vw, (max-width: 359px) 100vw" srcset="builds/development/images/small/' + filepath.slice(27) + ' 576w, builds/development/images/medium/' + filepath.slice(27) + ' 768w, builds/development/images/large/' + filepath.slice(27) + ' 992w, builds/development/images/xl/' + filepath.slice(27) + ' 1200w"></a></picture></div>';
                 }
                 return inject.transform.apply(inject.transform, arguments);
             },
@@ -174,6 +174,7 @@ gulp.task('exif', () => {
         data[filename] = {};
         data[filename]['Artist'] = file.exif.image.Artist;
         data[filename]['Resolution'] = file.exif.thumbnail.XResolution;
+        data[filename]['Date'] = file.exif.image.ModifyDate;
 
 
         file.contents = new Buffer(JSON.stringify(data));
@@ -191,7 +192,7 @@ gulp.task('htmlmin', () => {
 });
 
 gulp.task('html', () => {
-    runSequence('inject', 'htmlmin');
+    runSequence('compass', 'inject', 'htmlmin');
 })
 
 gulp.task('add', () => {
