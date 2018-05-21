@@ -108,10 +108,6 @@ gulp.task('resizeXL', () => {
     .pipe(gulp.dest('builds/development/images/xl'));
 });
 
-gulp.task('resize', ['original', 'resizeSmall', 'resizeMedium', 'resizeLarge', 'resizeXL']);
-
-
-
 gulp.task('watermark', () => {
     gulp.src('builds/development/images/small/*.jpg')
     .pipe(watermark({
@@ -191,10 +187,6 @@ gulp.task('htmlmin', () => {
     .pipe(gulp.dest('./'))
 });
 
-gulp.task('html', () => {
-    runSequence('compass', 'inject', 'htmlmin');
-})
-
 gulp.task('add', () => {
     return gulp.src('./*')
     .pipe(gitignore())
@@ -213,6 +205,13 @@ gulp.task('push', () => {
     });
 });
 
+gulp.task('resize', ['original', 'resizeSmall', 'resizeMedium', 'resizeLarge', 'resizeXL']);
+
+gulp.task('html', () => {
+    runSequence('compass', 'inject', 'htmlmin');
+});
+
 gulp.task('git-send', () => {
     runSequence('add', 'commit', 'push');
 });
+
