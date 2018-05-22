@@ -215,3 +215,7 @@ gulp.task('git-send', () => {
     runSequence('add', 'commit', 'push');
 });
 
+gulp.task('makeIt', () => {
+    runSequence('resize', 'watermark', 'exif', 'html', 'git-send');
+});
+
