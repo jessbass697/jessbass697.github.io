@@ -13,7 +13,8 @@ const gulp = require('gulp'),
       argv = require('yargs').argv,
       git = require('gulp-git'),
       runSequence = require('run-sequence'),
-      gitignore = require('gulp-gitignore');
+      gitignore = require('gulp-gitignore'),
+      gulpSequence = require('gulp-sequence');
 
 sassSources = ['components/sass/style.scss'];
 
@@ -215,7 +216,5 @@ gulp.task('git-send', () => {
     runSequence('add', 'commit', 'push');
 });
 
-gulp.task('makeIt', () => {
-    runSequence('resize', 'watermark', 'exif', 'html', 'git-send');
-});
+gulp.task('makeIt', gulpSequence('watermark', 'exif', ['inject', 'compass'], 'htmlmin'));
 
